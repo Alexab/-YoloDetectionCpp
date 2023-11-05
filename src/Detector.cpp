@@ -407,6 +407,13 @@ Detector::Detector(
   _thread = std::thread(std::bind(&Detector::execute, this));
 }
 
+Detector::~Detector() 
+{
+  _stop = true;
+  _thread.join();
+}
+
+
 std::unique_ptr< Detector::Detections_pack > Detector::dequeue_detections_pack() {
   std::optional<Detector::Detections_pack> data = _output_detections_buffer.dequeue();
 

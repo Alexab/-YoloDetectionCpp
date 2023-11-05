@@ -75,6 +75,7 @@ class Detector
 
   Detector(const Detector&) = delete;
   Detector(Detector&&) = delete;
+  ~Detector();
 
   bool enqueue_frame(const std::string &source_address, const cv::Mat& frame);
 
